@@ -7,10 +7,10 @@ import matplotlib
 from sklearn.linear_model import LinearRegression
 import numpy as np
 
-# ใช้ฟอนต์ภาษาไทย
+# ตั้งค่าฟอนต์ให้รองรับภาษาไทย
 matplotlib.rcParams['font.family'] = 'Tahoma'
 
-# แปลงชื่อเดือนจากไทยเป็นตัวเลข
+# แปลงชื่อเดือนจากไทยเป็นเลข
 thai_months = {
     "ม.ค.": "01", "ก.พ.": "02", "มี.ค.": "03", "เม.ย.": "04",
     "พ.ค.": "05", "มิ.ย.": "06", "ก.ค.": "07", "ส.ค.": "08",
@@ -46,7 +46,31 @@ def load_data():
 
 df = load_data()
 
-st.title("กราฟแนวโน้มราคาปิดหุ้น TRUE (6 เดือนย้อนหลัง)")
+# ส่วนหัวเว็บ
+st.title("สรุปข้อมูลหุ้น TRUE (6 เดือนย้อนหลัง)")
+
+# แสดงข้อมูลล่าสุด
+latest_row = df.iloc[-1]
+delta_price = latest_row["เปลี่ยนแปลง"]
+delta_percent = latest_row["เปลี่ยนแปลง(%)"]
+
+col1, col2, col3 = st.columns([2, 2, 2])
+
+with col1:
+    st.metric(
+        label="ราคาปิดล่าสุด",
+        value=f"{latest_row['ราคาปิด']:.2f} บาท",
+        delta=f"{delta_price:.2f} ({delta_percent:.2f}%)"
+    )
+
+with col2:
+    st.metric("SET Index", f"{latest_row['SET Index']:.2f}")
+
+with col3:
+    st.metric("ปริมาณซื้อขาย", f"{latest_row['ปริมาณ(พันหุ้น)']:.0f} พันหุ้น")
+
+# กราฟราคาปิดและแนวโน้ม
+st.subheader("กราฟราคาปิดและแนวโน้ม")
 
 X = df["วันที่"].map(pd.Timestamp.toordinal).values.reshape(-1, 1)
 y = df["ราคาปิด"].values
