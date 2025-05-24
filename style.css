@@ -1,0 +1,26 @@
+.pagination-btn, .active-button {
+    display: inline-block;
+    padding: 4px 6px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: white;
+    min-width: 36px;
+    font-size: 14px;
+    color: black;
+    font-weight: normal;
+    text-align: center;
+    user-select: none;
+    cursor: pointer;
+    margin: 0 1px;
+    box-sizing: border-box;
+}
+.pagination-btn:hover {
+    background-color: #eee;
+}
+.active-button {
+    background-color: #e6ffe6 !important;
+    border: 2px solid #00cc44 !important;
+    font-weight: bold !important;
+    color: #00aa00 !important;
+    margin: 0 1px;
+}
