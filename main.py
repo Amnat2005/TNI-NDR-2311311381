@@ -1,14 +1,13 @@
 import streamlit as st
-
-st.set_page_config(layout="wide")
-
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib
 from sklearn.linear_model import LinearRegression
 import numpy as np
 
-# ตั้งค่าฟอนต์ให้รองรับภาษาไทย
+st.set_page_config(layout="wide")
+
+# ตั้งค่าฟอนต์
 matplotlib.rcParams['font.family'] = 'Tahoma'
 
 thai_months = {
@@ -60,7 +59,6 @@ def load_css(file_name):
         css = f.read()
     st.markdown(f"<style>{css}</style>", unsafe_allow_html=True)
 
-# โหลด CSS จากไฟล์
 load_css("style.css")
 
 df = load_data()
@@ -95,13 +93,16 @@ model.fit(X, y)
 trend = model.predict(X)
 
 fig, ax = plt.subplots(figsize=(14, 6))
-ax.plot(df["วันที่"], y, label="ราคาปิดจริง")
+fig.patch.set_facecolor('#1a1a1a')  # พื้นหลังกราฟ
+ax.set_facecolor('#1a1a1a')
+ax.plot(df["วันที่"], y, label="ราคาปิดจริง", color='white')
 ax.plot(df["วันที่"], trend, label="แนวโน้ม (Linear Regression)", linestyle="--", color="red")
-ax.set_xlabel("วันที่")
-ax.set_ylabel("ราคาปิด (บาท)")
-ax.set_title("แนวโน้มราคาปิดหุ้น TRUE")
+ax.set_xlabel("วันที่", color='white')
+ax.set_ylabel("ราคาปิด (บาท)", color='white')
+ax.set_title("แนวโน้มราคาปิดหุ้น TRUE", color='white')
 ax.legend()
-ax.grid(True)
+ax.grid(True, color='gray')
+ax.tick_params(colors='white')
 st.pyplot(fig)
 
 df["เดือน"] = df["วันที่"].dt.to_period("M")
