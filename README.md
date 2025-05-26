@@ -33,6 +33,8 @@
 - กราฟสวยงาม พื้นหลังสีเข้มอ่านง่าย เหมาะกับการดูข้อมูลช่วงเวลายาว
 - ออกแบบเพื่อคนไทยโดยเฉพาะ รองรับวันที่แบบไทยและแสดงชื่อเดือนเป็นภาษาไทย
 
+  https://www.canva.com/design/DAGocWctmeM/530FTgwBWXu9Eg5DjqYyiQ/edit?classId=88008b5e-80fb-489d-be05-0cec04290c4c&assignmentId=70d55630-0c24-48ea-b207-16b2b692dd87&submissionId=444c97f8-387e-5463-6aad-e82ecd9a9950
+
 
 
 
